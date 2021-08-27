@@ -45,7 +45,7 @@ Bu loyiha veb-platforma shaklida (www.toodle.uz) faoliyat olib boradi. G'oyaning
 
 #### Yangi test yaratish
 
-![history](https://telegra.ph/file/99637cda01978a81fd732.png)
+![history](https://telegra.ph/file/d3cc8c3a97dcdf025fb8f.png)
 
 #### O‘quvchilarning test sinovlarida ishtirokini kuzatib borish, tahlil qilish va urinishlar sonini hisoblash.
 
@@ -53,7 +53,7 @@ Bu loyiha veb-platforma shaklida (www.toodle.uz) faoliyat olib boradi. G'oyaning
 
 #### Testlarni yaratishda o‘qituvchilar uchun matematik, fizik formulalarni kiritish oynasi.
 
-![history](https://telegra.ph/file/4a88613642ab0fdd202c0.png)
+![history](https://telegra.ph/file/e3ffe437b2d686df03190.png)
 
 ### Loyiha mualliflari va dasturchilar
 
