@@ -60,17 +60,20 @@ www.toodle.uz sayti hozirgi kunda Jizzax viloyati, Jizzax shaxri №6-umumta’l
 
 ![history](https://telegra.ph/file/4a88613642ab0fdd202c0.png)
 
-# Yuklab olish
-Ilovani o'rnatib, ishlatish uchun apk faylni yuklab oling [KCAL CAL APP](images/app-debug.apk)
+### Loyiha mualliflari va dasturchilar
 
-## Dasturchi
-
-### Rakhmatov Dilmurod
+#### Raxmatov Dilmurod
 Contact: [LinkedIn](https://www.linkedin.com/in/dilmurod-rakhmatov-ba215a174/)
+#### Raxmatov Dostonjon
+Contact: [Github](https://github.com/nonameclub)
 
-### Express Hackathon!
+### 👨‍💻👩‍💻Raqamli Avlod Hackathon!
 [Onlayn Digital Camp](http://camp.digitalgeneration.uz/) loyihasining Mobil dasturlash ishtirokchilari o'rtasida hackathon!
 
-29-avgust kuni mobil dasturlash bo’yicha “Express Hackathon” bo’lib o’tdi. Ishtirokchilar kun davomida KKal Calculator mobil dasturini tuzishlari kerak bo’ldi. G’olib ishtirokchilar maxsus sovg’alar va sertifikatlar bilan taqdirlandilar. Batafsil ma’lumot va sizni qiziqtirgan savollaringizga [bu yerda](https://t.me/digitalgeneration_uz/520) javob topasiz.
+Mustaqilligimizning 30 yilligiga bag'ishlab "Digital Generation Uzbekistan" Nodavlat Notijorat Muassasasi tomonidan Respublika miqyosida katta hackathonlarga start beradi! Hackathon bu dastur ishlab chiquvchilarning o‘ziga xos forumi bo‘lib, unda dasturiy taʼminot sohasining turli yo‘nalishlari mutaxassislari biror-bir muammoni hal qilish uchun birgalikda harakat qilishadi.
+
+Barcha shartlar va batafsil ma'lumot: hackathon.digitalgeneration.uz
+_________
+Digital Generation Uzbekistan
 
 
