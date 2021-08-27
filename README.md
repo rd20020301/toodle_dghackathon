@@ -7,11 +7,9 @@
 
   <h3 align="center">TOODLE - Onlayn ta'lim platformasi</h3>
 </p>
+_________
 
-
-
-
-### Loyiha maqsad
+### Loyiha maqsadi
 
 Bu loyiha veb-platforma shaklida (www.toodle.uz) faoliyat olib boradi. G'oyaning maqsadi umumiy o’rta ta’lim maktablari o’quvchilarini o’zlashtirishini nazorat qilishning online shaklini joriy qilishdan iborat. Saytga o’qituvchi  ta’lim berayotgan fanning sinflar kesimida har bir mavzu bo’yicha testlar yaratib, o’quvchiga yuboradi. O’quvchilar o’z login parollari bilan kirib mavzulashgan test savollariga javob yo’llaydilar. Javoblar usha zahoti o’qituvchining sahifasida o’zlashtirish foizlarida hosil bo’ladi. E’tiborli jihati, endi o’quvchi bitta fandan choraklikda 4-5 ta baho olsa, bizning holatda barcha mavzulardan nazoratdan o’tishi kerak. Buning natijasida REAL o’zlashtirishni aniqlash imkoniyati paydo bo’ladi.
 
@@ -68,7 +66,6 @@ Contact: [LinkedIn](https://www.linkedin.com/in/dilmurod-rakhmatov-ba215a174/)
 Contact: [Github](https://github.com/nonameclub)
 
 ### 👨‍💻👩‍💻Raqamli Avlod Hackathon!
-[Onlayn Digital Camp](http://camp.digitalgeneration.uz/) loyihasining Mobil dasturlash ishtirokchilari o'rtasida hackathon!
 
 Mustaqilligimizning 30 yilligiga bag'ishlab "Digital Generation Uzbekistan" Nodavlat Notijorat Muassasasi tomonidan Respublika miqyosida katta hackathonlarga start beradi! Hackathon bu dastur ishlab chiquvchilarning o‘ziga xos forumi bo‘lib, unda dasturiy taʼminot sohasining turli yo‘nalishlari mutaxassislari biror-bir muammoni hal qilish uchun birgalikda harakat qilishadi.
 
