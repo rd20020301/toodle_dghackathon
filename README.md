@@ -7,6 +7,7 @@
 
   <h3 align="center">TOODLE - Onlayn ta'lim platformasi</h3>
 </p>
+
 _________
 
 ### Loyiha maqsadi
@@ -69,7 +70,7 @@ Contact: [Github](https://github.com/nonameclub)
 
 Mustaqilligimizning 30 yilligiga bag'ishlab "Digital Generation Uzbekistan" Nodavlat Notijorat Muassasasi tomonidan Respublika miqyosida katta hackathonlarga start beradi! Hackathon bu dastur ishlab chiquvchilarning o‘ziga xos forumi bo‘lib, unda dasturiy taʼminot sohasining turli yo‘nalishlari mutaxassislari biror-bir muammoni hal qilish uchun birgalikda harakat qilishadi.
 
-Barcha shartlar va batafsil ma'lumot: hackathon.digitalgeneration.uz
+Barcha shartlar va batafsil ma'lumot: https://hackathon.digitalgeneration.uz/
 _________
 Digital Generation Uzbekistan
 
