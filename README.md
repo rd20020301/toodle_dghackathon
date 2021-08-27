@@ -38,33 +38,27 @@ Bu loyiha veb-platforma shaklida (www.toodle.uz) faoliyat olib boradi. G'oyaning
 - matematik formulalarni kiritishda matematika, fizika, kimyo va informatika o’qituvchilarining unicodlarni o‘zlashtirishi  kelib chiqadi;
 - o‘quvchilarni o‘zlashtirish ko‘rsatgichiga qarab ota-onalar farzandining imkoniyatlarini aniqlab oladilar va kasbga yo‘llashda bunga e’tibor beradilar.
 
-### 3. Statistika
+### Tajriba-sinov ishlari
 
-- sizning asosiy iste'mol kaloriyalaringizni va bugungi kunda qancha ovqatlanishingiz mumkinligini ko'rsatadi
+www.toodle.uz sayti hozirgi kunda Jizzax viloyati, Jizzax shaxri №6-umumta’lim maktabida tajribadan o‘tkazilmoqda. Bundan tashqari Jizzax viloyati Sh. Rashidov tumani №4-umumta’lim maktabining boshlang‘ich sinf o‘qituvchilari tomonidan keng qo‘llanilmoqda.
 
-![overview](images/overview.png)
+### Ilovalar
 
+#### O‘quvchilarning har bir dars soati mobaynida o‘zlashtirish natijasini hisoblash va kuzatish.
 
+![history](https://telegra.ph/file/a1f4f62c7cf30c9f77afe.png)
 
+#### Yangi test yaratish
 
-- Shuningdek, siz yangi ozuqa qo'shishingiz mumkin:
+![history](https://telegra.ph/file/99637cda01978a81fd732.png)
 
-![add](images/add.png)
+#### O‘quvchilarning test sinovlarida ishtirokini kuzatib borish, tahlil qilish va urinishlar sonini hisoblash.
 
+![history](https://telegra.ph/file/46f073a07a88c775d880b.png)
 
+#### Testlarni yaratishda o‘qituvchilar uchun matematik, fizik formulalarni kiritish oynasi.
 
-### 4. Tarix
-
-- Tarixda saqlangan ma'lumotlar
-
-![history](images/history.png)
-
-### 
-
-- Oldingi kunlarni ham ko'rishingiz mumkin
-
-![calendar](images/calendar.png)
-
+![history](https://telegra.ph/file/4a88613642ab0fdd202c0.png)
 
 # Yuklab olish
 Ilovani o'rnatib, ishlatish uchun apk faylni yuklab oling [KCAL CAL APP](images/app-debug.apk)
