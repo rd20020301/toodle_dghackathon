@@ -37,10 +37,6 @@ Bu loyiha veb-platforma shaklida (www.toodle.uz) faoliyat olib boradi. G'oyaning
 - matematik formulalarni kiritishda matematika, fizika, kimyo va informatika o’qituvchilarining unicodlarni o‘zlashtirishi  kelib chiqadi;
 - o‘quvchilarni o‘zlashtirish ko‘rsatgichiga qarab ota-onalar farzandining imkoniyatlarini aniqlab oladilar va kasbga yo‘llashda bunga e’tibor beradilar.
 
-### Tajriba-sinov ishlari
-
-www.toodle.uz sayti hozirgi kunda Jizzax viloyati, Jizzax shaxri №6-umumta’lim maktabida tajribadan o‘tkazilmoqda. Bundan tashqari Jizzax viloyati Sh. Rashidov tumani №4-umumta’lim maktabining boshlang‘ich sinf o‘qituvchilari tomonidan keng qo‘llanilmoqda.
-
 ### Ilovalar
 
 #### O‘quvchilarning har bir dars soati mobaynida o‘zlashtirish natijasini hisoblash va kuzatish.
