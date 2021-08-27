@@ -1,0 +1,67 @@
+@import '../variables'; 
+
+:host /deep/ ngb-datepicker {
+    border: 1px solid $border-color !important;
+    padding: 25px 20px !important;
+ }
+
+ :host /deep/ ngb-datepicker .bg-light {
+    background-color: $default-white !important;
+ }
+
+:host /deep/.ngb-dp-week {
+    padding-bottom: 5px;
+}
+
+:host /deep/.ngb-dp-weekdays {
+    border-bottom: 0px !important;
+}
+
+:host /deep/ ngb-datepicker .btn-light {
+    color: $default-text-color;
+    width: 36px !important;
+    height: 32px !important;
+    border-radius: 0 !important;
+}
+
+:host /deep/ .ngb-dp-day[_ngcontent-c4],
+:host /deep/ .ngb-dp-weekday[_ngcontent-c4], 
+:host /deep/ .ngb-dp-week-number[_ngcontent-c4] {
+    width: 36px !important;
+    height: 32px !important;
+}
+
+:host /deep/ .ngb-dp-weekday {
+    color: $default-text-color !important;
+    font-weight: bold;
+    font-style: normal !important;
+    font-size: 13px;
+}
+
+:host /deep/ select[_ngcontent-c5] {
+    width: calc(50% - 10px) !important;
+    margin: 0px 5px !important;
+}
+
+:host /deep/ .ngb-dp-arrow-btn {
+    margin: 0px !important;
+}
+
+:host /deep/ .ngb-dp-navigation-chevron:before {
+    border-width: 1px 1px 0 0 !important;
+}
+
+:host /deep/ .btn-link {
+    color: $default-text-color;
+
+    &:hover,
+    &:focus {
+        color: $default-dark;
+        background-color: $default-gray;
+    }
+}
+
+:host /deep/ .ngb-dp-month-name {
+    margin: 10px 0px;
+    color: $default-dark;
+}

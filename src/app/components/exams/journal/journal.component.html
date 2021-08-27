@@ -1,0 +1,70 @@
+<div class="container-fluid">
+    <div class="page-title">
+        <h4>Jurnal</h4>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-block">
+                    <ngx-spinner>
+                    </ngx-spinner>
+                    <div class="table-overflow" style="overflow: scroll; overflow: auto;">
+                        <table class="table table-lg" *ngIf="model && class_id == 0">
+                            <tbody>
+                                <tr *ngFor="let exam of model">
+                                    <td>
+                                        <div class="mrg-top-10">
+                                            <a *ngIf="isTeacher()"
+                                                [routerLink]="['/exams/journal',exam.id]"><span>{{exam.class}}</span></a>
+                                            <a *ngIf="isPupil()"
+                                                [routerLink]="['/exams/journal',exam.id]"><span>{{exam.name}}</span></a>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="zui-wrapper">
+                            <div class="zui-scroller">                                
+                                <table class="zui-table table table-bordered table-header-rotated" *ngIf="class_id > 0">
+                                    <thead>
+                                        <tr>
+                                            <th class="zui-sticky-col" style="height: 150px;"></th>
+                                            <th class="rotate">
+                                                <div><span title="O'zlashtirish ko'rsatgichi">O'zlashtirish</span></div>
+                                            </th>
+                                            <th *ngFor="let res of model?.exams" class="rotate">
+                                                <div><span title="{{res.name}}">{{ res.time }}</span></div>
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let res of model?.exams[0].results; let i = index">
+                                            <td class="zui-sticky-col" style="height: 45px !important;">
+                                                <div class="list-info">
+                                                    <a href="#">
+                                                        <img style="width: 25px !important; height: 25px !important;" src="{{ res.photo }}" alt="" class="thumb-img">
+                                                        <div class="info" style="padding-left: 33px !important;"><span class="title">{{ res.fullname }}</span>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                            </td>
+                                            <td
+                                                style="font-weight: bold; color: black; text-align: center; background: antiquewhite;">
+                                                {{ model?.exams[0].results[i].point }}
+                                            </td>
+                                            <td style="font-weight: bold; text-align: center;"
+                                                *ngFor="let res of model?.exams; let ind = index"
+                                                [ngStyle]="model?.exams[ind].results[i].result == 2 && {'color': 'red'} || model?.exams[ind].results[i].result == 3 && {'color': 'orange'} || model?.exams[ind].results[i].result > 3 && {'color': 'green'} ">
+                                                {{ model?.exams[ind].results[i].result }}
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

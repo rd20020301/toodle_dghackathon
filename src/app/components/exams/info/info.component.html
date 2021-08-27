@@ -1,0 +1,362 @@
+<div class="container-fluid">
+    <div class="page-title">
+        <h4>Test ma'lumotlari</h4>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <ngx-spinner>
+            </ngx-spinner>
+            <div class="row">
+                <div *ngIf="model" class="col-md-12">
+                    <div class="card">
+                        <div class="card-heading border bottom">
+                            <h4 class="card-title">Umumiy Ma'lumotlar</h4>
+                        </div>
+                        <div class="card-block">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <p class="mrg-top-10 text-dark"> <b>Nomi:</b></p>
+                                </div>
+                                <div class="col-md-6">
+                                    <p class="mrg-top-10">{{ model.name }}</p>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <p class="mrg-top-10 text-dark"> <b>Savollar soni:</b></p>
+                                </div>
+                                <div class="col-md-6">
+                                    <p class="mrg-top-10">{{ model.quantity }}</p>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <p class="mrg-top-10 text-dark"> <b>Vaqt:</b></p>
+                                </div>
+                                <div class="col-md-6">
+                                    <p class="mrg-top-10" *ngIf="model.time > 0">{{ model.time }} minut</p>
+                                    <p class="mrg-top-10" *ngIf="model.time == 0">Chegaralanmagan</p>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <p class="mrg-top-10 text-dark"> <b>Testning to'liqlik darajasi:</b></p>
+                                </div>
+                                <div class="col-md-3">
+                                    <div [ngClass]="{'progress-success': model.fullyPercentage == 100, 'progress-danger': model.fullyPercentage < 50 , 'progress-warning': (model.fullyPercentage > 50 && model.fullyPercentage < 100)}" class="progress progress-lg" style="margin-top: 10px;">
+                                        <div role="progressbar" title="{{model.fullyPercentage}}%" aria-valuenow="model.fullyPercentage" aria-valuemin="0" aria-valuemax="100" class="progress-bar" [style.width.%]="model.fullyPercentage"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-heading border bottom">
+                            <h4 style="float: left; padding-top: 12px" class="card-title">Savollar</h4>                                                    
+                            <div style="float: right; margin-right: 10px;" class="display-block">
+                                <a style="color: red; margin-right: 10px;" href="http://primat.org/mathred/mathred.html">Matematik formulalar</a>
+                                <div class="btn-group">
+                                    <button type="button" title="Saqlash" (click)="onSubmit()" class="btn btn-default">
+                                        <i class="ti-save"></i>
+                                    </button>                                    
+                                    <a href="" title="Demo (F9)" data-toggle="modal" data-target="#modal-view" (click)="viewDemo(currentStep)" class="btn btn-default">
+                                        <i class="ti-eye"></i>
+                                    </a>
+                                    <a data-toggle="collapse" title="Testni tahrirlash" class="btn btn-default" href="#collapseOne">                                        
+                                        <i class="icon ti-arrow-circle-down"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="collapseOne" class="collapse card-block panel-collapse" [ngClass]="{'show': isOpen}">
+                            <div class="row relative">
+                                <div class="col-md-10 ml-auto mr-auto">                                    
+                                    <div class="row">
+                                        <div class="center-block" style="width:100px; display: table; margin: 0 auto;">
+                                            <input type="number" class="form-control" min="1" max="model.quantity"
+                                                [(ngModel)]="currentStep" name="currentstep" (change)="goToStep()">
+                                        </div>                                        
+                                    </div>
+                                    <form #questionForm="ngForm" *ngIf="questions.length > 0" class="container mt-3"
+                                        (ngSubmit)="onSubmit()">
+                                        <aw-wizard [navBarLayout]="'large-filled-symbols'" #wizard>
+                                            <aw-wizard-step stepTitle="SAVOL" [navigationSymbol]="{ symbol: i + 1 }"
+                                                *ngFor="let question of questions; let first = first; let last = last; let i = index;">
+                                                <div class="row mrg-top-40">
+                                                    <div class="col-md-12">
+                                                        <div class="row">
+                                                            <div class="col-md-12">
+                                                                <div class="form-group">
+                                                                    <label>Savol</label>
+                                                                    <textarea class="form-control" rows="1"
+                                                                        name="name_{{i}}"
+                                                                        [(ngModel)]="question.name"></textarea>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <label>Variantlar</label>
+                                                        <div class="row">
+                                                            <div class="col-md-6">
+                                                                <div class="radio">
+                                                                    <ui-switch [(ngModel)]="question.answers[0].correct"
+                                                                        (valueChange)="onRadioChanged(i, 1)"
+                                                                        [ngModelOptions]="{standalone: true}">
+                                                                    </ui-switch>
+                                                                    <!-- <input type="radio" name="answer{{i}}" id="form_{{i + 1}}_1" (change)="onRadioChanged(i, 1)" value="answer1" [checked]="question.correct == 'answer1'"> -->
+                                                                    <textarea class="form-control" rows="1"
+                                                                        id="form-{{i + 1}}-1" name="answer_text_{{i}}_1"
+                                                                        [(ngModel)]="question.answers[0].text"></textarea>
+                                                                </div>
+                                                                <div class="radio">
+                                                                    <ui-switch [(ngModel)]="question.answers[1].correct"
+                                                                        (valueChange)="onRadioChanged(i, 2)"
+                                                                        [ngModelOptions]="{standalone: true}">
+                                                                    </ui-switch>
+                                                                    <!-- <input type="radio" name="answer{{i}}" id="form_{{i + 1}}_2" (change)="onRadioChanged(i, 2)" value="answer2" [checked]="question.correct == 'answer2'"> -->
+                                                                    <textarea class="form-control" rows="1"
+                                                                        id="form-{{i + 1}}-2" name="answer_text_{{i}}_2"
+                                                                        [(ngModel)]="question.answers[1].text"></textarea>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <div class="radio">
+                                                                    <ui-switch [(ngModel)]="question.answers[2].correct"
+                                                                        (valueChange)="onRadioChanged(i, 3)"
+                                                                        [ngModelOptions]="{standalone: true}">
+                                                                    </ui-switch>
+                                                                    <!-- <input type="radio" name="answer{{i}}" id="form_{{i + 1}}_3" (change)="onRadioChanged(i, 3)" value="answer3" [checked]="question.correct == 'answer3'"> -->
+                                                                    <textarea class="form-control" rows="1"
+                                                                        id="form-{{i + 1}}-3" name="answer_text_{{i}}_3"
+                                                                        [(ngModel)]="question.answers[2].text"></textarea>
+                                                                </div>
+                                                                <div class="radio">
+                                                                    <ui-switch [(ngModel)]="question.answers[3].correct"
+                                                                        (valueChange)="onRadioChanged(i, 4)"
+                                                                        [ngModelOptions]="{standalone: true}">
+                                                                    </ui-switch>
+                                                                    <!-- <input type="radio" name="answer{{i}}" id="form_{{i + 1}}_4" (change)="onRadioChanged(i, 4)" value="answer4" [checked]="question.correct == 'answer4'"> -->
+                                                                    <textarea class="form-control" rows="1"
+                                                                        id="form-{{i + 1}}-4" name="answer_text_{{i}}_4"
+                                                                        [(ngModel)]="question.answers[3].text"></textarea>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="mrg-top-20">
+                                                    <button type="button" *ngIf="!first"
+                                                        class="btn btn-default button-previous btn-rounded"
+                                                        (click)="changeStep(0)" awPreviousStep>Oldingisi</button>
+                                                    <button type="button" *ngIf="!last"
+                                                        class="btn btn-primary button-next pull-right btn-rounded"
+                                                        (click)="changeStep(1)" awNextStep>Keyingisi</button>
+                                                    <button type="submit" *ngIf="last"
+                                                        class="btn btn-success button-next pull-right btn-rounded">Saqlash</button>
+                                                </div>
+                                            </aw-wizard-step>
+                                            <!-- <aw-wizard-step stepTitle="YAKUNLASH" [navigationSymbol]='{ symbol: "T" }'>
+                                            <div class="row mrg-top-40">
+                                                <div class="col-md-6 ml-auto mr-auto">
+                                                    <img class="img-fluid d-block mrg-horizon-auto" src="assets/images/others/cart.png" alt="">
+                                                    <div class="text-center">
+                                                        <h2>Thanks for Your Order</h2>
+                                                        <p>Your order has been placed successfully.
+                                                            <br>
+                                                            Click learn more to know more about the order status.
+                                                        </p>
+                                                        <button class="btn btn-info btn-inverse btn-lg">Learn More</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="mrg-top-20">
+                                                <button type="button" class="btn btn-default button-previous btn-rounded" awPreviousStep>Previous</button>
+                                            </div>
+                                        </aw-wizard-step>                                       -->
+                                        </aw-wizard>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-heading border bottom">
+                            <div class="col-md-12">
+                                <h4 style="float: left; padding-top: 12px" class="card-title">Biriktirilgan sinflar</h4>
+                                <a style="float: right" *ngIf="model.fullyPercentage == 100" [routerLink]="['/exams/invite/',model.id]"
+                                    class="btn btn-primary">Sinf biriktirish</a>
+                                <a style="float: right; margin-top: 12px;" *ngIf="model.fullyPercentage < 100" href="#">Sinf biriktirish uchun testning to'liqlik darajasi 100% bo'lishi zarur</a>
+                            </div>
+                        </div>
+                        <div class="card-block">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="table-overflow">
+                                        <table datatable id="classAccess" class="table table-lg table-hover"
+                                            [dtOptions]="dtOptions">
+                                            <thead>
+                                                <tr>
+                                                    <th></th>
+                                                    <th>Sinf nomi</th>
+                                                    <th>Vaqti</th>
+                                                    <th></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr *ngFor="let class of classes">
+                                                    <td>
+                                                        <div class="checkbox mrg-left-20">
+                                                            <input id="task10" name="task10" type="checkbox">
+                                                            <label for="task10"></label>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="list-info mrg-top-10">
+                                                            <div class="info" style="padding-left: 0 !important">
+                                                                <span class="title"> {{ class.class_id.class }}</span>
+                                                                <span class="sub-title">O'quvchilar soni:
+                                                                    {{ class.class_id.count_pupils }}</span>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="mrg-top-15">
+                                                            <span>{{ class.start_time }} -
+                                                                {{ class.finish_time }}</span>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="mrg-top-10 text-center">
+                                                            <a href="" data-toggle="modal" data-target="#modal-lg"
+                                                                (click)="getMarks(class.class_id, model)"
+                                                                class="btn btn-info btn-icon btn-rounded"
+                                                                title="Natijalarni ko'rish">
+                                                                <i class="ti-agenda"></i>
+                                                            </a>
+                                                            <a (click)="deleteAccess(class)" style="color: white;"
+                                                                class="btn btn-danger btn-icon btn-rounded"
+                                                                title="O'chirish">
+                                                                <i class="ti-trash"></i>
+                                                            </a>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="modal-lg">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="col-md-12">
+                    <h4 style="float: left; padding-top: 12px" class="card-title">Baholar</h4>
+                    <a style="float: right; color: white;" (click)="downloadPdf()" class="btn btn-primary">Saqlab olish
+                        (PDF)</a>
+                </div>
+
+            </div>
+            <div class="modal-body">
+                <div class="padding-15">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="table-overflow">
+                                <table *ngIf="results" id="markTable" style="width: 100% !important;"
+                                    class="table table-lg table-hover" datatable [dtOptions]="dtResultOptions">
+                                    <thead>
+                                        <tr>
+                                            <th>F.I.SH</th>
+                                            <th>Bahosi</th>
+                                            <th>Topshirgan vaqti</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let result of results">
+                                            <td>
+                                                <div class="list-info mrg-top-10"><img src="{{ result.photo }}" alt=""
+                                                        class="thumb-img">
+                                                    <div class="info"><span class="title">{{ result.fullname
+                                                            }}</span><span class="sub-title"> ID {{ result.id }}</span>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="mrg-top-15">
+                                                    <span class="text-info"><b>{{ result.result }}</b></span>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="mrg-top-15">
+                                                    <span>{{ result.start_time }}</span>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="modal-view" *ngIf="selectedQuestion">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">            
+            <div class="modal-body">
+                <div class="padding-15">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>Savol</label>
+                                        <h5><mathjax [content]="selectedQuestion.name"></mathjax></h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <label>Variantlar</label>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="radio">
+                                        <input type="radio"
+                                            value="{{selectedQuestion.answers[0].uid}}">
+                                        <label></label><mathjax [content]="selectedQuestion.answers[0].text"></mathjax>
+                                    </div>
+                                    <div class="radio">
+                                        <input type="radio"
+                                            value="{{selectedQuestion.answers[1].uid}}" checked="">
+                                        <label></label><mathjax [content]="selectedQuestion.answers[1].text"></mathjax>
+                                    </div>
+                                    <div class="radio">
+                                        <input type="radio"
+                                            value="{{selectedQuestion.answers[2].uid}}">
+                                        <label></label><mathjax [content]="selectedQuestion.answers[2].text"></mathjax>
+                                    </div>
+                                    <div class="radio">
+                                        <input type="radio"
+                                            value="{{selectedQuestion.answers[3].uid}}">
+                                        <label></label><mathjax [content]="selectedQuestion.answers[3].text"></mathjax>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

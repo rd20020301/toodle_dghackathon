@@ -1,0 +1,113 @@
+<div class="authentication">
+    <div class="sign-up">
+        <div class="row no-mrg-horizon">
+            <div class="col-md-8 no-pdd-horizon d-none d-md-block">
+                <div class="full-height bg" style="background-image: url('assets/images/others/img-31.jpg')">
+                    <div class="vertical-align full-height pdd-horizon-70">
+                        <div class="table-cell">
+                            <div class="row">
+                                <div class="mr-auto ml-auto col-md-10">
+                                    <div class="text-right">
+                                        <img class="img-responsive mrg-left-auto mrg-btm-15" src="assets/images/logo/logo-white.png"
+                                            alt="" width="170">
+                                        <p class="text-white lead text-opacity lh-1-7">Lorem Ipsum is simply dummy text
+                                            of the printing and typesetting industry. Lorem Ipsum has</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 bg-white no-pdd-horizon">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="full-height height-100">
+                            <div class="vertical-align full-height pdd-horizon-70">
+                                <div class="table-cell">
+                                    <div class="pdd-horizon-15">
+                                        <div *ngIf="!step2">
+                                            <h1 class="mrg-btm-30">Create Your account</h1>
+                                            <form [formGroup]="form">
+                                                <div class="form-group">
+                                                    <label class="text-normal text-dark">User Name</label>
+                                                    <input [(ngModel)]="username" name="username" type="text" class="form-control"
+                                                        placeholder="Username" formControlName="username" [ngClass]="{ 'is-invalid': submitted && f.username?.errors}" required>
+                                                    <label class="error" *ngIf="submitted && f.username?.errors && f.username?.errors.required">This field is required.</label>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="text-normal text-dark">Email Address</label>
+                                                    <input [(ngModel)]="email" name="email" type="email" class="form-control"
+                                                        placeholder="E-mail" formControlName="email" email="false" required [ngClass]="{ 'is-invalid': submitted && f.email?.errors}">
+                                                    <label class="error" *ngIf="submitted && f.email?.errors && f.email?.errors.required">Please enter a valid email address.</label>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="text-normal text-dark">Phone number</label>
+                                                    <input [(ngModel)]="phone" formControlName="phone" required [ngClass]="{ 'is-invalid': submitted && f.phone?.errors}" name="phone" type="text" class="form-control"
+                                                        placeholder="Phone number">
+                                                    <label class="error" *ngIf="submitted && f.phone?.errors && f.phone?.errors.required">This field is required.</label>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="text-normal text-dark">Password</label>
+                                                    <input type="password" formControlName="password" [(ngModel)]="password" name="password" class="form-control"
+                                                        placeholder="Password" [ngClass]="{ 'is-invalid': submitted && f.password?.errors}" required>
+                                                    <label class="error" *ngIf="submitted && f.password?.errors && f.password?.errors.required">This field is required.</label>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="text-normal text-dark">Confirm Password</label>
+                                                    <input type="password" [(ngModel)]="confirmpassword" name="confirmpassword"
+                                                        class="form-control" formControlName="confirmPassword" [ngClass]="{ 'is-invalid': submitted && form.hasError('notSame')}" placeholder="Confirm Password">
+                                                    <label class="error" *ngIf="submitted && form.hasError('notSame')">Passwords do not match</label>
+                                                </div>
+                                                <div class="checkbox font-size-13 mrg-btm-20">
+                                                    <input id="agreement" name="agreement" type="checkbox" checked="">
+                                                    <label for="agreement">Remember Me</label>
+                                                </div>
+                                                <div class="form-group">
+                                                    <button type="submit" (click)="signUp()" class="btn btn-primary btn-block border-radius-6">Step 2</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                        <div *ngIf="step2">
+                                            <h1 class="mrg-btm-30"><span (click)="back()" style="cursor: pointer; color:#7774e7" class="ti-arrow-left"></span>  Link to a tenant</h1>
+                                            <form>
+                                                <div class="form-group radio">
+                                                    <input value='1' [(ngModel)]="existingTenant" type="radio"
+                                                        name="ten" id="form-3-1">
+                                                    <label for="form-3-1">Create a new tenant</label>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="text-normal text-dark">Tenant Name</label>
+                                                    <input [(ngModel)]="tenant.name" [ngModelOptions]="{standalone: true}"
+                                                        name="tname"  [disabled]="existingTenant == '2'" type="text" class="form-control" placeholder="Tenant name">
+                                                </div>
+                                                <div class="form-group radio">
+                                                    <input value='2' [(ngModel)]="existingTenant" type="radio"
+                                                    name="ten" id="form-3-2">
+                                                    <label for="form-3-2">Link to an existing tenant</label>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="text-normal text-dark">Tenant Id</label>
+                                                    <input type="text"  [disabled]="existingTenant == '1'" [(ngModel)]="tenantId" name="tenantId" class="form-control"
+                                                        placeholder="Tenant Id">
+                                                </div>
+                                                <div class="form-group">
+                                                    <button type="button" (click)="signUp()" class="btn btn-primary btn-block border-radius-6">Create
+                                                        New Account</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                        <p>Already have an account? <a [routerLink]="['/authentication/sign-in']">Sign
+                                                In</a></p>
+                                        <hr>
+                                        <small>By signing up you agree to out <a href="">Terms & Policy</a></small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

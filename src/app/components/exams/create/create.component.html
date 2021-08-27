@@ -1,0 +1,65 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-heading border bottom">
+                    <h4 class="card-title">Test yaratish</h4>
+                </div>
+                <div class="card-block">
+                    <div class="mrg-top-40">
+                        <div class="row">
+                            <div class="col-md-8 ml-auto mr-auto">
+                                <form>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label>Nomi</label>
+                                                <input type="text" [(ngModel)]="exam.name" [ngModelOptions]="{standalone: true}" placeholder="Nomini kiriting" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label>Savollar soni</label>
+                                                <input type="number" [(ngModel)]="exam.quantity" [ngModelOptions]="{standalone: true}" placeholder="Sonini kiriting" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="row" style="margin-left: 3px;">
+                                            <div class="col-md-8">
+                                                <div class="form-group">
+                                                    <label>Savollarni fayl orqali yuklang</label>
+                                                    <input type="file" (change)="handleFileInput($event.target.files)" class="form-control">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <span style="color: red; font-style: italic;">Savollar namunasini <a href="https://api.s-zone.uz/uploads/namuna.xlsx">yuklab oling.</a></span>
+                                                </div>
+                                            </div>
+                                        </div>                                
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label>Testga beriladigan vaqt (minutlarda kiriting masalan: 120)</label>
+                                                <h6 style="color: red; font-style:italic">Agar vaqt chegarasi bo'lmasa unda 0 qoldiring.</h6>
+                                                <input type="number" [(ngModel)]="exam.time" [ngModelOptions]="{standalone: true}" placeholder="Vaqtni minutda kiriting masalan (120)" class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6 col-xs-6">
+                                            
+                                        </div>
+                                        <div class="col-md-6 col-xs-6">
+                                            <div class="text-right mrg-top-5">
+                                                <button (click)="createExam()" type="submit" class="btn btn-primary">Saqlash</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

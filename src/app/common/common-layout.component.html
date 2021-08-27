@@ -1,0 +1,321 @@
+<div class="app" [ngClass]="
+    {
+        'is-collapsed': app.layout.isMenuCollapsed,
+        'is-opened': app.layout.isMenuOpened,
+        'rtl' : app.layout.rtlActived
+    }">
+    <div class="layout" [ngClass]="headerSelected">
+
+        <div [ngClass]="sidenavSelected">
+            <!-- Side Nav START -->
+            <div class="side-nav" sideBar>
+                <div class="side-nav-inner">
+                    <div class="side-nav-logo">
+                        <a href="" [routerLink]="['/dashboard']">
+                            <div class="logo logo-dark" style="background-image: url('assets/images/logo/logo.png')"></div>
+                            <div class="logo logo-white" style="background-image: url('assets/images/logo/logo-white.png')"></div>
+                        </a>
+                        <div class="mobile-toggle side-nav-toggle">
+                            <a href="javascript:void(0);" (click)="app.layout.isMenuCollapsed = !app.layout.isMenuCollapsed">
+                                <i class="ti-arrow-circle-left"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <ul class="side-nav-menu scrollable">
+                        <li clas="nav-item" routerLinkActive="active">
+                            <a class="mrg-top-30" href="" [routerLink]="['/dashboard']">
+                                <span class="icon-holder">
+                                    <i class="ti-home"></i>
+                                </span>
+                                <span class="title">Bosh sahifa</span>
+                            </a>
+                        </li>
+                        <li clas="nav-item" routerLinkActive="active" *ngIf="isTeacher()">
+                            <a *ngIf="canAdd" class="mrg-top-30" style="cursor: pointer;" data-toggle="modal" data-target="#create-project">
+                                <span class="icon-holder">
+                                    <i class="ti-plus"></i>
+                                </span>
+                                <span class="title">Yangi test hosil qilish</span>
+                            </a>
+                            <a *ngIf="!canAdd" class="mrg-top-30" [routerLink]="['/exams/create']">
+                                <span class="icon-holder">
+                                    <i class="ti-plus"></i>
+                                </span>
+                                <span class="title">Yangi test hosil qilish</span>
+                            </a>
+                        </li>
+                        <li clas="nav-item" routerLinkActive="active" *ngIf="isTeacher()">
+                            <a class="mrg-top-30" href="" [routerLink]="['/exams']">
+                                <span class="icon-holder">
+                                    <i class="ti-stats-up"></i>
+                                </span>
+                                <span class="title">Mening testlarim</span>
+                            </a>
+                        </li>     
+                        <li clas="nav-item" routerLinkActive="active" *ngIf="isTeacher() || isPupil()">
+                            <a class="mrg-top-30" href="" [routerLink]="['/exams/journal']">
+                                <span class="icon-holder">
+                                    <i class="ti-agenda"></i>
+                                </span>
+                                <span class="title">Jurnal</span>
+                            </a>
+                        </li>                   
+                        <li class="nav-item dropdown">
+                            <a class="dropdown-toggle mrg-top-30" href="javascript:void(0);" >
+                                <span class="icon-holder">
+                                    <i class="ti-user"></i>
+                                </span>
+                                <span class="title">Ma'lumotlar</span>
+                                <span class="arrow">
+                                    <i class="ti-angle-right"></i>
+                                </span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li *ngIf="isSuperUser()">
+                                    <a href="" [routerLink]="['/users']">                                        
+                                        O'qituvchilar
+                                    </a>  
+                                </li>
+                                <li *ngIf="isAdmin()">
+                                    <a href="" [routerLink]="['/users/pupils']">                                        
+                                        O'quvchilar
+                                    </a>  
+                                </li>  
+                                <li>
+                                    <a href="" [routerLink]="['/users/profile']">                                        
+                                        Profil
+                                    </a> 
+                                </li>   
+                                <li>
+                                    <a href="" [routerLink]="['/users/settings']">                                        
+                                        Sozlamalar
+                                    </a> 
+                                </li>               
+                            </ul>
+                        </li>                        
+                        <!-- <li class="nav-item dropdown" >
+                            <a class="dropdown-toggle" href="javascript:void(0);" >
+                                <span class="icon-holder">
+                                    <i class="ti-layout-media-overlay"></i>
+                                </span>
+                                <span class="title">Dropdown</span>
+                                <span class="arrow">
+                                    <i class="ti-angle-right"></i>
+                                </span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="">item 1</a>
+                                </li>
+                                <li>
+                                    <a href="">item 2</a>
+                                </li>                  
+                            </ul>
+                        </li>  -->
+                        <!-- <li class="nav-item dropdown">
+                            <a class="dropdown-toggle" href="javascript:void(0);">
+                                <span class="icon-holder">
+                                    <i class="ti-view-list-alt"></i>
+                                </span>
+                                <span class="title">Multi Level</span>
+                                <span class="arrow">
+                                    <i class="ti-angle-right"></i>
+                                </span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li class="nav-item dropdown">
+                                    <a href="javascript:void(0);">
+                                        <span>Level 1.2</span>
+                                    </a>
+                                </li>	
+                                <li class="nav-item dropdown">
+                                    <a href="javascript:void(0);">
+                                        <span>Level 1.1</span>
+                                        <span class="arrow">
+                                            <i class="ti-angle-right"></i>
+                                        </span>
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <li>
+                                            <a href="javascript:void(0);">Level 2</a>
+                                        </li>         
+                                    </ul>
+                                </li>         
+                            </ul>
+                        </li> -->
+                    </ul>
+                </div>
+            </div>
+            <!-- Side Nav END -->
+
+            <!-- Page Container START -->
+            <div class="page-container">
+
+                <!-- Top Nav START -->
+                <div class="header navbar">
+                    <div class="header-container">
+                        <ul class="nav-left">
+                            <li>
+                                <a class="side-nav-toggle" href="javascript:void(0);" (click)="app.layout.isMenuCollapsed = !app.layout.isMenuCollapsed">
+                                    <i class="ti-view-grid"></i>
+                                </a>
+                            </li>
+                        </ul>
+                        <ul class="nav-right">
+                                <li class="user-profile dropdown">
+                                        <a href="" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                            <img class="profile-img img-fluid" src="assets/images/user.png" alt="">
+                                            <div class="user-info">
+                                                <span class="name pdd-right-5">{{ currentUser.username}}</span>
+                                                <i class="ti-angle-down font-size-10"></i>
+                                            </div>
+                                        </a>
+                                        <ul class="dropdown-menu">
+                                            <li>
+                                                <a href="">
+                                                    <i class="ti-settings pdd-right-10"></i>
+                                                    <span>Sozlamalar</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="">
+                                                    <i class="ti-user pdd-right-10"></i>
+                                                    <span>Foydalanuvchi</span>
+                                                </a>
+                                            </li>                                            
+                                            <li role="separator" class="divider"></li>
+                                            <li>
+                                                <a (click)="logout()" style="cursor: pointer">
+                                                    <i class="ti-power-off pdd-right-10"></i>
+                                                    <span>Chiqish</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                            <!-- <li>
+                                <a class="side-panel-toggle" href="javascript:void(0);" (click)="app.layout.sidePanelOpen = !app.layout.sidePanelOpen">
+                                    <i class="ti-align-right"></i>
+                                </a>
+                            </li> -->
+                        </ul>
+                    </div>
+                </div>
+                <!-- Top Nav END -->
+
+                <!-- Side Panel START -->
+                <div class="side-panel" [ngClass]="{'side-panel-open' : app.layout.sidePanelOpen}">
+                    <div class="side-panel-wrapper bg-white">
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li class="nav-item active">
+                                <a class="nav-link" href="#tab1" role="tab" data-toggle="tab">
+                                    <span>Tab 1</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#tab2" role="tab" data-toggle="tab">
+                                    <span>Tab 2</span>
+                                </a>
+                            </li>
+                            <li class="nav-item ">
+                                <a class="nav-link" href="#tab3" role="tab" data-toggle="tab">
+                                    <span>Tab 3</span>
+                                </a>
+                            </li>
+                            <li class="panel-close">
+                                <a class="side-panel-toggle" href="javascript:void(0);" (click)="app.layout.sidePanelOpen = !app.layout.sidePanelOpen">
+                                    <i class="ti-close"></i>
+                                </a>
+                            </li>
+                        </ul>
+                        <div class="tab-content">
+                            <div id="tab1" role="tabpanel" class="tab-pane fade in active">
+                            </div>
+                            <div id="tab2" role="tabpanel" class="tab-pane fade">
+                            </div>
+                            <div id="tab3" role="tabpanel" class="tab-pane fade">
+                            </div>
+                        </div>	
+                    </div>
+                </div>	
+                <!-- Side Panel END -->
+
+                <!-- Content Wrapper START -->
+                <div class="main-content">
+                    <router-outlet></router-outlet>
+                </div>    
+                <!-- Content Wrapper END -->
+
+                <!-- Footer START -->
+                <footer class="content-footer">
+                    <div class="footer">
+                        <div class="copyright">
+                            <span>Copyright © 2020. <b style="float: right;">G'oya muallifi: Rustam Murodov, Dasturchi: Doston Raxmatov</b></span>
+                            <!-- <span class="go-right">
+                                <a href="" class="text-gray mrg-right-15">Link 1</a>
+                                <a  href="" class="text-gray">Link 2</a>
+                            </span> -->
+                        </div>
+                    </div>
+                </footer>
+                <!-- Footer END -->
+                
+            </div>
+            <!-- Page Container END -->
+
+         </div>
+    </div>    
+</div>
+<!-- Modal START-->
+<div class="modal fade" id="create-project">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4>Yangi test yaratish</h4>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Nomi</label>
+                                <input type="text" [(ngModel)]="exam.name" [ngModelOptions]="{standalone: true}" placeholder="Nomini kiriting" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Savollar soni</label>
+                                <input type="number" [(ngModel)]="exam.quantity" [ngModelOptions]="{standalone: true}" placeholder="Sonini kiriting" class="form-control">
+                            </div>
+                        </div>
+                        <div class="row" style="margin-left: 3px;">
+                            <div class="col-md-8">
+                                <div class="form-group">
+                                    <label>Savollarni fayl orqali yuklang</label>
+                                    <input type="file" (change)="handleFileInput($event.target.files)" class="form-control">
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <span style="color: red; font-style: italic;">Savollar namunasini <a href="https://api.s-zone.uz/uploads/namuna.xlsx">yuklab oling.</a></span>
+                                </div>
+                            </div>
+                        </div> 
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Testga beriladigan vaqt (minutlarda kiriting masalan: 120)</label>
+                                <h6 style="color: red; font-style:italic">Agar vaqt chegarasi bo'lmasa unda 0 qoldiring.</h6>
+                                <input type="number" [(ngModel)]="exam.time" [ngModelOptions]="{standalone: true}" placeholder="Vaqtni minutda kiriting masalan (120)" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer no-border">
+                <div class="text-right">
+                    <button class="btn btn-default btn-sm" data-dismiss="modal">Bekor qilish</button>
+                    <button class="btn btn-primary btn-sm" (click)="createExam()" data-dismiss="modal">Saqlash</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

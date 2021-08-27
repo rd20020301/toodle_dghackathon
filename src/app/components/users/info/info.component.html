@@ -1,0 +1,102 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-heading border bottom">
+                    <h4 class="card-title">Ma'lumot</h4>
+                </div>
+                <ngx-spinner></ngx-spinner>
+                <div class="card-block" *ngIf="teacher || pupil">                    
+                    <div class="mrg-top-40">
+                        <div class="row">
+                            <div class="col-md-8 ml-auto mr-auto">
+                                <form *ngIf="modeUser == 'teacher'">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label>F.I.SH</label>
+                                                <input type="text" [(ngModel)]="teacher.teacher.fullname" [ngModelOptions]="{standalone: true}" placeholder="Nomini kiriting" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label>Foydalanuvchi nomi</label>
+                                                <input type="text" [(ngModel)]="teacher.username" [ngModelOptions]="{standalone: true}" placeholder="Foydalanuvchi Nomini kiriting" class="form-control">
+                                            </div>
+                                        </div>                                        
+                                        <div class="col-md-12">
+                                            <label>Fanni tanlang:</label>
+                                            <ng-selectize [config]="singleSelectConfig" [options]="subjects"
+                                                [(ngModel)]="teacher.subject.id" [ngModelOptions]="{standalone: true}"
+                                                ngDefaultControl></ng-selectize>
+                                        </div>
+                                        
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label>Parol</label>
+                                                <input type="password" [(ngModel)]="teacher.password" [ngModelOptions]="{standalone: true}" placeholder="Parolni kiriting" class="form-control">
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6 col-xs-6">
+                                            
+                                        </div>
+                                        <div class="col-md-6 col-xs-6">
+                                            <div class="text-right mrg-top-5">
+                                                <button (click)="updateTeacher()" *ngIf="mode == 'update'" type="submit" class="btn btn-primary">Saqlash</button>
+                                                <button (click)="createTeacher()" *ngIf="mode == 'create'" type="submit" class="btn btn-success">Qo'shish</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>       
+                                <form *ngIf="modeUser == 'pupil'">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label>F.I.SH</label>
+                                                <input type="text" [(ngModel)]="pupil.pupil.fullname" [ngModelOptions]="{standalone: true}" placeholder="Nomini kiriting" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label>Foydalanuvchi nomi</label>
+                                                <input type="text" [(ngModel)]="pupil.username" [ngModelOptions]="{standalone: true}" placeholder="Foydalanuvchi Nomini kiriting" class="form-control">
+                                            </div>
+                                        </div>                                        
+                                        <div class="col-md-12">
+                                            <label>Sinfni tanlang:</label>
+                                            <ng-selectize [config]="classSelectConfig" [options]="classes"
+                                                [(ngModel)]="pupil.classname.id" [ngModelOptions]="{standalone: true}"
+                                                ngDefaultControl></ng-selectize>
+                                        </div>
+                                        
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label>Parol</label>
+                                                <input type="password" [(ngModel)]="pupil.password" [ngModelOptions]="{standalone: true}" placeholder="Parolni kiriting" class="form-control">
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6 col-xs-6">
+                                            
+                                        </div>
+                                        <div class="col-md-6 col-xs-6">
+                                            <div class="text-right mrg-top-5">
+                                                <button (click)="updatePupil()" *ngIf="mode == 'update'" type="submit" class="btn btn-primary">Saqlash</button>
+                                                <button (click)="createPupil()" *ngIf="mode == 'create'" type="submit" class="btn btn-success">Qo'shish</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>                            
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

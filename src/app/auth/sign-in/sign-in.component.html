@@ -1,0 +1,49 @@
+<div class="authentication">
+  <div class="sign-in">
+    <div class="row no-mrg-horizon">
+      <div class="col-md-8 no-pdd-horizon d-none d-md-block">
+        <div class="full-height bg" style="background-image: url('assets/images/others/img-29.jpg')">
+          <div class="img-caption">
+            <h1 class="caption-title" style="color: black; font-weight: bold;">Toodle bilan endi oson!</h1>
+            <p class="caption-text" style="color: black; font-weight: bold;">Onlayn ta'lim platformasi</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 no-pdd-horizon">
+        <div class="full-height bg-white height-100">
+          <div class="vertical-align full-height pdd-horizon-70">
+            <div class="table-cell">
+              <div class="pdd-horizon-15">
+                <h2>Login</h2>
+                <p class="mrg-btm-15 font-size-13">Foydalanuvchi nomi va parolni kiriting</p>
+                <form>
+                  <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Foydalanuvchi nomi" name="username" [(ngModel)]="username">
+                  </div>
+                  <div class="form-group">
+                    <input type="password" [(ngModel)]="password" name="password" class="form-control" placeholder="Parol" >
+                  </div>
+                  <div class="checkbox font-size-12">
+                    <input id="agreement" name="agreement" type="checkbox">
+                    <label for="agreement">Eslab qolish?</label>
+                  </div>
+                  <div *ngIf="errorMessage.length > 0" style="color:red">
+                    {{ errorMessage }}
+                  </div>
+                  <button ui-sref="index.main" (click)="onLogin()" class="btn btn-info">Kirish</button>
+                </form>
+              </div>
+            </div>
+          </div>
+          <div class="login-footer">
+            <img class="img-responsive inline-block" src="assets/images/logo/logo.png" width="100" alt=""> 
+            <span style="color: darkgray; font-size: 12px; margin-left: 10px; padding-top: 5px;">
+              Bog'lanish uchun telefon: <a href="tel:+998973294472">+998973294472</a>
+            </span>
+            <!-- <span class="font-size-13 pull-right pdd-top-10">Don't have an account? <a [routerLink]="['/authentication/sign-up']">Sign Up Now</a></span> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

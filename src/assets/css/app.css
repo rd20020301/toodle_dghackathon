@@ -1,0 +1,55 @@
+th.rotate {
+    height: 150px;
+    white-space: nowrap;    
+}
+th.rotate div {
+    transform:
+      translate(-9px, 0px)
+      rotate(-90deg);
+    width: 30px;
+}
+th.rotate div > span {
+    padding: 5px 10px;
+}
+
+.zui-table {
+    border: none;    
+    border-right: solid 1px #DDEFEF;
+    border-collapse: separate;
+    border-spacing: 0;
+    font: normal 13px Arial, sans-serif;
+}
+.zui-table thead th {
+    background-color: #DDEFEF;
+    border-color: darkgrey !important;
+    padding: 10px;
+    text-align: left;
+    text-shadow: 1px 1px 1px #fff;
+    white-space: nowrap;
+}
+.zui-table tbody td {
+    border-bottom: solid 1px #DDEFEF;
+    color: #333;
+    border-color: darkgrey !important;
+    padding: 10px;
+    text-shadow: 1px 1px 1px #fff;
+    white-space: nowrap;
+}
+.zui-wrapper {
+    position: relative;
+}
+.zui-scroller {
+    margin-left: 250px;
+    overflow-x: scroll;
+    overflow-y: visible;
+    padding-bottom: 5px;    
+}
+.zui-table .zui-sticky-col {
+    border-left: solid 1px #DDEFEF;
+    border-right: solid 1px #DDEFEF;
+    left: 0;
+    position: absolute;
+    top: auto;
+    background-color: white;
+    width: 250px;
+}

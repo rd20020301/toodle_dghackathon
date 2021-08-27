@@ -1,0 +1,160 @@
+<div class="container-fluid">
+    <div class="page-title">
+        <h4>O'quvchilar ro'yxati</h4>
+    </div>
+    <div class="row">
+        <ngx-spinner>
+        </ngx-spinner>
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-block">                    
+                    <div class="col-md-12">
+                        <div class="row">
+                            <div class="col-md-2" style="float: left;">
+                                <h3>Sinfni tanlang:</h3>
+                            </div>
+                            <div class="col-md-2" *ngIf="classes.length > 0">
+                                <ng-selectize [config]="singleSelectConfig" [options]="classes" [(ngModel)]="class_id"
+                                    [ngModelOptions]="{standalone: true}" (ngModelChange)="getPupils($event)"
+                                    ngDefaultControl></ng-selectize>
+                            </div>
+                            <div class="col-md-8">
+                                <a style="float: right; color: white;" [routerLink]="['/users/detail', 'pupil']"
+                                    class="btn btn-primary">Yangi
+                                    hosil
+                                    qilish</a>
+                                <a style="float: right; color: white;" (click)="newFile()" data-toggle="modal" data-backdrop="static" data-keyboard="false" data-target="#upload-file"
+                                    class="btn btn-success">
+                                    <span class="icon-holder">
+                                        <i class="ti-files"></i>
+                                    </span> Exceldan eksport qilish</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="table-overflow">
+                        <table *ngIf="model" id="pupilsTable" class="table table-lg table-hover" datatable
+                            [dtOptions]="dtOptions">
+                            <thead>
+                                <tr>
+                                    <th>F.I.O</th>
+                                    <th>Sinfi</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let user of model">
+                                    <td>
+                                        <div class="list-info mrg-top-10">
+                                            <a [routerLink]="['/users/detail','pupil', user.id]">
+                                                <img src="{{ user.photo }}" alt="" class="thumb-img">
+                                                <div class="info"><span class="title">{{ user.full_name }}</span><span
+                                                        class="sub-title">Foydalanuvchi nomi:
+                                                        {{ user.username }}</span></div>
+                                            </a>
+                                        </div>
+                                    </td>
+                                    <td style="width: 10%">
+                                        <div class="relative mrg-top-15">
+                                            <span class="title"> {{ user.class }}</span>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="mrg-top-10 text-center">
+                                            <a [routerLink]="['/users/detail', 'pupil', user.id]"
+                                                class="btn btn-info btn-icon btn-rounded" title="O'zgartirish">
+                                                <i class="ti-agenda"></i>
+                                            </a>
+                                            <a href="" (click)="deletePupil(user.id)"
+                                                class="btn btn-danger btn-icon btn-rounded" title="O'chirish">
+                                                <i class="ti-trash"></i>
+                                            </a>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal START-->
+<div class="modal fade" id="upload-file">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 style="float: left; padding-top: 12px" class="card-title">O'quvchi qo'shish</h4>
+                    <a *ngIf="credentials" style="float: right; color: white;" (click)="downloadPdf()"
+                        class="btn btn-primary">Saqlab olish (PDF)</a>
+            </div>
+            <div class="modal-body">
+                <form *ngIf="!credentials">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Faylni yuklang</label>
+                                <input type="file" (change)="handleFileInput($event.target.files)" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Sinf</label>
+                                <input type="text" [(ngModel)]="file_class" [ngModelOptions]="{standalone: true}"
+                                    placeholder="Sinfni kiriting" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Ism Familiya ko'rsatilgan yacheykani ko'rsating (masalan: A2)</label>
+                                <h6 style="color: red; font-style:italic">Ma'lumot aynan ko'rsatilgan yacheykadan
+                                    boshlanganligiga iqror bo'ling!</h6>
+                                <input type="text" [(ngModel)]="file_column" [ngModelOptions]="{standalone: true}"
+                                    placeholder="Yacheykani kiting (masalan: A2)" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <div class="padding-15" *ngIf="credentials">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h6 style="color: red; text-align: center; margin-bottom: 20px;">Modal oynani yopishdan oldin login parollarni saqlab oling. Aks holda ololmay qolishingiz mumkin.</h6>
+                            <div class="table-overflow">
+                                <table id="markTable" style="width: 100% !important;"
+                                    class="table table-lg table-hover" datatable [dtOptions]="dtResultOptions">
+                                    <thead>
+                                        <tr>
+                                            <th>Login</th>
+                                            <th>Parol</th>                                            
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let result of credentials">                                            
+                                            <td>
+                                                <div class="mrg-top-15">
+                                                    <span class="text-info"><b>{{ result.username }}</b></span>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="mrg-top-15">
+                                                    <span>{{ result.password }}</span>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer no-border">
+                <div class="text-right">
+                    <button class="btn btn-default btn-sm" data-dismiss="modal">Yopish</button>
+                    <button *ngIf="!credentials" class="btn btn-primary btn-sm" (click)="uploadFile()" data-dismiss="modal">Saqlash</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

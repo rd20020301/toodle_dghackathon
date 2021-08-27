@@ -1,0 +1,84 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-heading border bottom">
+                    <h4 class="card-title">Sinfni biriktirish</h4>
+                </div>
+                <div class="card-block">
+                    <div class="mrg-top-40">
+                        <div class="row">
+                            <div class="col-md-8 ml-auto mr-auto">
+                                <form>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <label>Sinfni tanlang:</label>
+                                            <ng-selectize [config]="singleSelectConfig" [options]="classes"
+                                                [(ngModel)]="class_id" [ngModelOptions]="{standalone: true}"
+                                                ngDefaultControl></ng-selectize>
+                                        </div>
+                                    </div>
+                                    <div style="margin-bottom: 15px" class="card-heading border bottom">
+                                        <h4 class="card-title">O'tkazilish vaqti</h4>
+                                    </div>
+                                    <div class="row">                                    
+                                            <div class="col-md-6">
+                                                <div class="timepicker-input input-icon form-group">
+                                                    <i class="ti-time"></i>
+                                                    <input type="text" class="form-control"
+                                                        placeholder="Boshlanish vaqti" name="start_time"
+                                                        [(ngModel)]="start_time" ngbDatepicker #d="ngbDatepicker"
+                                                        (click)="d.toggle()">
+                                                </div>
+                                            </div>  
+                                            <div class="col-md-6">
+                                                <div class="timepicker-input input-icon form-group">
+                                                    <i class="ti-time"></i>
+                                                    <input type="text" class="form-control"
+                                                        placeholder="Tugash vaqti" name="end_time"
+                                                        dateFormat="dd-mm-yyyy h:i"
+                                                        [(ngModel)]="end_time" ngbDatepicker #d2="ngbDatepicker"
+                                                        (click)="d2.toggle()">
+                                                </div>
+                                            </div> 
+                                        <!-- <div class="col-md-10">
+                                            <ul class="list-unstyled list-info">
+                                                <li>
+                                                    <span class="thumb-img pdd-top-10">
+                                                        <i class="ti-user font-size-30"></i>
+                                                    </span>
+                                                    <div class="info">
+                                                        <b class="text-dark font-size-16">Admin/User</b>
+                                                        <p>Please select a user role</p>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-md-2 text-right">
+                                            <div class="toggle-checkbox toggle-success checkbox-inline toggle-sm mrg-top-15">
+                                                <input type="checkbox" name="toggle1" id="toggle1" checked>
+                                                <label for="toggle1"></label>
+                                            </div>
+                                        </div> -->
+                                    </div>
+                                    <hr>
+                                    <div class="row">
+                                        <div class="col-md-6 col-xs-6">
+
+                                        </div>
+                                        <div class="col-md-6 col-xs-6">
+                                            <div class="text-right mrg-top-5">
+                                                <button type="submit" (click)="inviteUser()"
+                                                    class="btn btn-primary">Biriktirish</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

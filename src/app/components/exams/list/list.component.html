@@ -1,0 +1,69 @@
+<div class="container-fluid">
+    <div class="page-title">
+        <h4>Testlar ro'yxati</h4>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-block">
+                    <ngx-spinner>                        
+                    </ngx-spinner>
+                    <div class="col-md-12">
+                        <a style="float: right" [routerLink]="['/exams/create']" class="btn btn-primary">Yangi hosil
+                            qilish</a>
+                    </div>
+                    <div class="table-overflow">
+                        <table *ngIf="model" id="examsList" class="table table-lg table-hover" datatable [dtOptions]="dtOptions">
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th>Nomi</th>                                    
+                                    <th>Status</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let exam of model">
+                                    <td>
+                                        <div class="checkbox mrg-left-20">
+                                            <input id="task10" name="task10" type="checkbox">
+                                            <label for="task10"></label>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="list-info mrg-top-10">
+                                            <a [routerLink]="['/exams/detail', exam.id]">
+                                                <div class="info" style="padding-left: 0 !important">
+                                                    <span class="title">{{ exam.name }}</span>
+                                                    <span class="sub-title">Savollar soni: {{ exam.quantity }}</span>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </td>
+                                    <td style="width: 10%">
+                                        <div class="relative mrg-top-15">
+                                            <span *ngIf="exam.status == 1" class="status online"> </span>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="mrg-top-10 text-center">
+                                            <a [routerLink]="['/exams/detail', exam.id]"
+                                                class="btn btn-info btn-icon btn-rounded"
+                                                title="Ko'rish">
+                                                <i class="ti-agenda"></i>
+                                            </a>
+                                            <a (click)="deleteExam(exam)" style="color: white" class="btn btn-danger btn-icon btn-rounded"
+                                                title="O'chirish">
+                                                <i class="ti-trash"></i>
+                                            </a>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

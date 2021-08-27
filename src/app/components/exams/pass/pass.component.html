@@ -1,0 +1,117 @@
+<div class="container-fluid" *ngIf="exam != null">
+    <div class="page-title">
+        <h4> {{ exam.subject }} fanidan testni topshirish</h4>
+    </div>
+    <div class="card">
+        <div class="card-heading border bottom">
+            <h4 style="float: left; padding-top: 12px" class="card-title">{{ exam.name }}, Test uchun berilgan vaqt -
+                {{ exam.time }} minut, Savollar soni - {{ exam.quantity }} ta</h4>
+            <h4 *ngIf="!finished" style="float: right; padding-top: 10px; padding-left: 20px;">
+                <div *ngIf="exam.time > 0">
+                    <countdown #cd (finished)="onSubmit()" [config]="{leftTime: exam.time * 60, demand: true, template: '$!h!:$!m!:$!s!'}">
+                    </countdown>
+                </div>
+            </h4>
+            <button style="float: right" *ngIf="!started && !finished" (click)="startExam()"
+                class="btn btn-info">Boshlash</button>
+        </div>
+        <div class="card-block">
+            <div class="row relative" *ngIf="questions.length > 0 || finished">
+                <div class="col-md-10 ml-auto mr-auto">
+                    <form #questionForm="ngForm" *ngIf="questions.length > 0" class="container mt-3"
+                        (ngSubmit)="onSubmit()">
+                        <aw-wizard [navBarLayout]="'large-filled-symbols'" #wizard>
+                            <aw-wizard-step stepTitle="SAVOL" [navigationSymbol]="{ symbol: i + 1 }"
+                                *ngFor="let question of questions; let first = first; let last = last; let i = index;">
+                                <div class="row mrg-top-40">
+                                    <div class="col-md-12">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label>Savol</label>
+                                                    <h5><mathjax [content]="question.name"></mathjax></h5>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <label>Variantlar</label>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="radio">
+                                                    <input type="radio" [(ngModel)]="question.correct"
+                                                        value="{{question.answers[0].uid}}" name="form_{{i + 1}}_1"
+                                                        id="form-{{i + 1}}-1">
+                                                    <label for="form-{{i + 1}}-1"></label>
+                                                    <mathjax [content]="question.answers[0].text"></mathjax>
+                                                </div>
+                                                <div class="radio">
+                                                    <input type="radio" [(ngModel)]="question.correct"
+                                                        value="{{question.answers[1].uid}}" name="form_{{i + 1}}_2"
+                                                        id="form-{{i + 1}}-2" checked="">
+                                                    <label for="form-{{i + 1}}-2"></label>
+                                                    <mathjax [content]="question.answers[1].text"></mathjax>
+                                                </div>
+                                                <div class="radio">
+                                                    <input type="radio" [(ngModel)]="question.correct"
+                                                        value="{{question.answers[2].uid}}" name="form_{{i + 1}}_3"
+                                                        id="form-{{i + 1}}-3">
+                                                    <label for="form-{{i + 1}}-3"></label>
+                                                    <mathjax [content]="question.answers[2].text"></mathjax>
+                                                </div>
+                                                <div class="radio">
+                                                    <input type="radio" [(ngModel)]="question.correct"
+                                                        value="{{question.answers[3].uid}}" name="form_{{i + 1}}_4"
+                                                        id="form-{{i + 1}}-4">
+                                                    <label for="form-{{i + 1}}-4"></label>
+                                                    <mathjax [content]="question.answers[3].text"></mathjax>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mrg-top-20">
+                                    <button type="button" *ngIf="!first"
+                                        class="btn btn-default button-previous btn-rounded"
+                                        awPreviousStep>Oldingisi</button>
+                                    <button type="button" *ngIf="!last"
+                                        class="btn btn-primary button-next pull-right btn-rounded"
+                                        awNextStep>Keyingisi</button>
+                                    <button type="submit" *ngIf="last"
+                                        class="btn btn-success button-next pull-right btn-rounded">Yakunlash</button>
+                                </div>
+                            </aw-wizard-step>
+                            <!-- <aw-wizard-step stepTitle="YAKUNLASH" [navigationSymbol]='{ symbol: "T" }'>
+                            <div class="row mrg-top-40">
+                                <div class="col-md-6 ml-auto mr-auto">
+                                    <img class="img-fluid d-block mrg-horizon-auto" src="assets/images/others/cart.png" alt="">
+                                    <div class="text-center">
+                                        <h2>Thanks for Your Order</h2>
+                                        <p>Your order has been placed successfully.
+                                            <br>
+                                            Click learn more to know more about the order status.
+                                        </p>
+                                        <button class="btn btn-info btn-inverse btn-lg">Learn More</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mrg-top-20">
+                                <button type="button" class="btn btn-default button-previous btn-rounded" awPreviousStep>Previous</button>
+                            </div>
+                        </aw-wizard-step>                                       -->
+                        </aw-wizard>
+                    </form>
+                    <div class="row mrg-top-40" *ngIf="finished">
+                        <div class="col-md-6 ml-auto mr-auto">
+                            <img class="img-fluid d-block mrg-horizon-auto" src="assets/images/others/passed.jpeg" alt="">
+                            <div class="text-center">
+                                <h2>Testni topshirib bo'lgansiz</h2>
+                                <p>
+                                    To'g'ri jaboblar soni {{exam.quantity}} tadan {{result.correct}} ta
+                                </p>
+                                <button [routerLink]="['/dashboard']" class="btn btn-info btn-inverse btn-lg">Boshqa testlarni yechish</button>
+                            </div>
+                        </div>
+                    </div>                    
+                </div>
+            </div>
+        </div>
+    </div>
