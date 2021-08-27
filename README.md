@@ -1,7 +1,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
-  <a href="https://toodle.uz/assets/images/logo/logo.png">
+  <a href="logo.png">
     <img src="images/logo.png">
   </a>
 
