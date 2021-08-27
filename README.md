@@ -1,7 +1,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
-  <a href="https://github.com/rd20020301/ccal_cal_app">
+  <a href="https://toodle.uz/assets/images/logo/logo.png">
     <img src="images/logo.png">
   </a>
 
