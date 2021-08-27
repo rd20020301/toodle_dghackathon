@@ -1,8 +1,8 @@
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
-  <a href="https://telegra.ph/file/c91f1af087f92050fa013.png">
-    <img src="images/logo.png">
+  <a href="https://github.com/rd20020301/toodle_dghackathon">
+    <img src="https://telegra.ph/file/c91f1af087f92050fa013.png">
   </a>
 
   <h3 align="center">KCAL CAL APP - EXPRESS HACKATHON</h3>
