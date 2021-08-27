@@ -1,7 +1,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
-  <a href="logo.png">
+  <a href="https://telegra.ph/file/c91f1af087f92050fa013.png">
     <img src="images/logo.png">
   </a>
 
